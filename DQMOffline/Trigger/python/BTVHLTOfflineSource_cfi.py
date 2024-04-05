@@ -10,13 +10,9 @@ BTVHLTOfflineSource = DQMEDAnalyzer("BTVHLTOfflineSource",
 
     triggerSummaryLabel     = cms.InputTag("hltTriggerSummaryAOD", "", "HLT"),
     triggerResultsLabel     = cms.InputTag("TriggerResults", "", "HLT"),
-    onlineDiscrLabelPF      = cms.InputTag("hltDeepCombinedSecondaryVertexBJetTagsPF", "probb"),
-    onlineDiscrLabelCalo    = cms.InputTag("hltDeepCombinedSecondaryVertexBJetTagsCalo", "probb"),
-    offlineDiscrLabelb      = cms.InputTag("pfDeepCSVJetTags", "probb"),
-    offlineDiscrLabelbb     = cms.InputTag("pfDeepCSVJetTags", "probbb"),
-    hltFastPVLabel          = cms.InputTag("hltFastPrimaryVertex"),
+    onlineDiscrLabelPF      = cms.InputTag("hltParticleNetDiscriminatorsJetTags", "BvsAll"),
+    offlineDiscrLabelb      = cms.InputTag("pfParticleNetAK4DiscriminatorsJetTagsForRECO", "BvsAll"),
     hltPFPVLabel            = cms.InputTag("hltVerticesPFSelector"),
-    hltCaloPVLabel          = cms.InputTag("hltVerticesL3"),
     offlinePVLabel          = cms.InputTag("offlinePrimaryVertices"),
     offlineIPLabel          = cms.InputTag("pfImpactParameterTagInfos"),
     turnon_threshold_loose  = cms.double(0.2),
@@ -31,12 +27,12 @@ BTVHLTOfflineSource = DQMEDAnalyzer("BTVHLTOfflineSource",
     pathPairs = cms.VPSet(
 
         cms.PSet(
-            pathname = cms.string("HLT_Mu12_DoublePFJets40_PFBTagDeepCSV_p71_v"),
+            pathname = cms.string("HLT_Mu12_DoublePFJets40_PNetBTag_0p11"),
             pathtype = cms.string("PF")
         ),
         cms.PSet(
-            pathname = cms.string("HLT_Mu12_DoublePFJets40MaxDeta1p6_DoublePFBTagDeepCSV_p71_v"),
-            pathtype = cms.string("Calo")
+            pathname = cms.string("HLT_Mu12_DoublePFJets40MaxDeta1p6_PNet2BTag_0p11"),
+            pathtype = cms.string("PF")
         ),
    ),
 )
@@ -57,15 +53,15 @@ bTagHLTTrackMonitoring_muPF1 = TrackToTrackComparisonHists.clone(
     referenceTrack           = "referenceTracksForHLTBTag",
     monitoredBeamSpot        = "hltOnlineBeamSpot",
     referenceBeamSpot        = "offlineBeamSpot",
-    topDirName               = "HLT/BTV/HLT_Mu12_DoublePFJets40_PFBTagDeepCSV_p71PF",
+    topDirName               = "HLT/BTV/HLT_Mu12_DoublePFJets40_PNetBTag_0p11PF",
     referencePrimaryVertices = "offlinePrimaryVertices",
     monitoredPrimaryVertices = "hltVerticesPFSelector",
-    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu12_DoublePFJets40_PFBTagDeepCSV_p71*"])
+    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu12_DoublePFJets40_PNetBTag_0p11*"])
 )
 
-bTagHLTTrackMonitoring_muPF2 = bTagHLTTrackMonitoring_muPF1.clone( 
-    topDirName = "HLT/BTV/HLT_Mu12_DoublePFJets40MaxDeta1p6_DoublePFBTagDeepCSV_p71PF",
-    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu12_DoublePFJets40MaxDeta1p6_DoublePFBTagDeepCSV_p71*"])
+bTagHLTTrackMonitoring_muPF2 = bTagHLTTrackMonitoring_muPF1.clone(
+    topDirName = "HLT/BTV/HLT_Mu12_DoublePFJets40MaxDeta1p6_PNet2BTag_0p11PF",
+    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu12_DoublePFJets40MaxDeta1p6_PNet2BTag_0p11*"])
 )
 
 bTagHLTTrackMonitoringSequence = cms.Sequence(
