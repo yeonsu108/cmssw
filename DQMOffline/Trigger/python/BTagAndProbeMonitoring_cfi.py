@@ -9,8 +9,7 @@ BTagAndProbeMonitoring = cms.EDProducer('BTagAndProbe',
   elecID = cms.InputTag('egmGsfElectronIDsForDQM', 'cutBasedElectronID-RunIIIWinter22-V1-tight'),
   #jets = cms.InputTag('ak4PFJetsCHS'),
   btagAlgos = cms.VInputTag(
-    'pfDeepCSVJetTags:probb',
-    'pfDeepCSVJetTags:probbb'
+    'pfParticleNetAK4DiscriminatorsJetTagsForRECO:BvsAll',
   ),
   jetSelection = cms.string('pt > 0'),
   eleSelection = cms.string('pt > 0 && abs(eta) < 2.5'),
