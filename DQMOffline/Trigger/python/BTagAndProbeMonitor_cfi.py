@@ -14,8 +14,8 @@ BTagAndProbeMonitoring = BTagAndProbeMonitoring.clone(
     muons     = "muons", # while pfIsolatedMuonsEI are reco::PFCandidate !
     vertices  = "offlinePrimaryVertices",
     
-    btagAlgos = ['pfParticleNetAK4DiscriminatorsJetTagsForRECO:BvsAll', 'pfParticleNetAK4DiscriminatorsJetTagsForRECO:BvsAll'],
-    workingpoint = 0.8484, # Medium wp
+    btagAlgos = ['pfParticleNetAK4DiscriminatorsJetTagsForRECO:BvsAll'],
+    workingpoint = 0.1919, # Medium wp
     leptJetDeltaRmin = 0.4,
     bJetDeltaEtaMax  = 9999.,
     
