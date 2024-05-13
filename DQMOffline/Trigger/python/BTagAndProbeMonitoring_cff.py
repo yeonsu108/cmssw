@@ -18,7 +18,7 @@ BTagAndProbe_1e1m = BTagAndProbeMonitoring.clone(
     eleSelection = 'pt>25 & abs(eta)<2.4',
     muoSelection = 'pt>10 & abs(eta)<2.4',
     bjetSelection = 'pt>30 & abs(eta)<2.4',
-    genericTriggerEventPSet = dict(hltPaths = ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_PNetBTag_0p5*']),
+    genericTriggerEventPSet = dict(hltPaths = ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30*']),
     #denGenericTriggerEventPSet = dict(hltPaths = ['HLT_Mu12_DoublePFJets40_PFBTagDeepCSV_p71_v*',
     #                                  'HLT_Mu12_DoublePFJets40MaxDeta1p6_DoublePFBTagDeepCSV_p71_v*']),
     debug = cms.bool(True),

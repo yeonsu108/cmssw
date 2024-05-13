@@ -15,7 +15,7 @@ BTagAndProbeMonitoring = BTagAndProbeMonitoring.clone(
     vertices  = "offlinePrimaryVertices",
     
     btagAlgos = ['pfParticleNetAK4DiscriminatorsJetTagsForRECO:BvsAll'],
-    workingpoint = 0.1919, # Medium wp
+    workingpoint = 0.2, # Medium wp
     leptJetDeltaRmin = 0.4,
     bJetDeltaEtaMax  = 9999.,
     

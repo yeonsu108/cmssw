@@ -27,7 +27,7 @@ BTVHLTOfflineSource = DQMEDAnalyzer("BTVHLTOfflineSource",
     pathPairs = cms.VPSet(
 
         cms.PSet(
-            pathname = cms.string("HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_PNetBTag_0p5"),
+            pathname = cms.string("HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30"),
             pathtype = cms.string("PF")
         ),
    ),
@@ -49,10 +49,10 @@ bTagHLTTrackMonitoring_muPF1 = TrackToTrackComparisonHists.clone(
     referenceTrack           = "referenceTracksForHLTBTag",
     monitoredBeamSpot        = "hltOnlineBeamSpot",
     referenceBeamSpot        = "offlineBeamSpot",
-    topDirName               = "HLT/BTV/HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_PNetBTag_0p5PF",
+    topDirName               = "HLT/BTV/HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30PF",
     referencePrimaryVertices = "offlinePrimaryVertices",
     monitoredPrimaryVertices = "hltVerticesPFSelector",
-    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_PNetBTag_0p5*"])
+    genericTriggerEventPSet = dict(hltPaths = ["HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30*"])
 )
 
 bTagHLTTrackMonitoringSequence = cms.Sequence(
