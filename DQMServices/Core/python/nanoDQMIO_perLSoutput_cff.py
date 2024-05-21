@@ -57,6 +57,15 @@ nanoDQMIO_perLSoutput = cms.PSet(
     "PixelPhase1/Tracks/PXForward/size_PXDisk_-2",
     "PixelPhase1/Tracks/PXForward/size_PXDisk_-3",
 
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalm1",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalm2",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalm3",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalm4",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalp1",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalp2",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalp3",
+    "CSC/CSCOfflineMonitor/recHits/hRHGlobalp4",
+
     "HLT/Vertexing/hltPixelVertices/hltPixelVertices/goodvtxNbr",
     "HLT/Tracking/ValidationWRTOffline/hltMergedWrtHighPurityPV/mon_eta",
     "HLT/Tracking/ValidationWRTOffline/hltMergedWrtHighPurityPV/mon_hits",
@@ -226,5 +235,17 @@ nanoDQMIO_perLSoutput = cms.PSet(
     "JetMET/Jet/Cleanedak4PFJetsCHS/Pt",
     "JetMET/MET/pfMETT1/Cleaned/METSig",
     "JetMET/vertices",     
+
+    "Muons/MuonRecoAnalyzer/GlbMuon_Glb_pt",
+    "Muons/MuonRecoAnalyzer/GlbMuon_Glb_eta",
+    "Muons/MuonRecoAnalyzer/GlbMuon_Glb_phi",
+    "Muons/MuonRecoAnalyzer/Res_TkGlb_qOverlap",
+    "Muons/diMuonHistograms/GlbGlbMuon_LM",
+    "Muons/diMuonHistograms/GlbGlbMuon_HM",
+    "Muons/Isolation/global/relPFIso_R03",
+    "Muons/globalMuons/GeneralProperties/NumberOfMeanRecHitsPerTrack_glb",
+    "Muons/standAloneMuonsUpdatedAtVtx/HitProperties/NumberOfValidRecHitsPerTrack_sta",
+    "Muons/MuonRecoOneHLT/GlbMuon_Glb_pt",
+    "Muons/MuonRecoOneHLT/GlbMuon_Glb_eta",
   ) )
 )
