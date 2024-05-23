@@ -17,7 +17,7 @@ parser.add_argument('-s', '--nStreams', type = int, help = 'Number of EDM stream
                     default = 0)
 
 parser.add_argument('-i', '--inputFiles', nargs = '+', help = 'List of EDM input files',
-                    default = ['/store/relval/CMSSW_12_6_0_pre2/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/125X_mcRun3_2022_realistic_v3-v1/2580000/2d96539c-b321-401f-b7b2-51884a5d421f.root'])
+                    default = ['/store/relval/CMSSW_14_1_0_pre2/RelValTTbar_14TeV/GEN-SIM-DIGI-RAW/PU_140X_mcRun3_2024_realistic_v7_STD_2024_PU-v1/2580000/201ba0a5-10ab-4139-9a12-4443d9ba2843.root'])
 
 parser.add_argument('-n', '--maxEvents', type = int, help = 'Number of input events',
                     default = 100)
