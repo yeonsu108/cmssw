@@ -84,6 +84,9 @@ private:
   float turnon_threshold_loose_;
   float turnon_threshold_medium_;
   float turnon_threshold_tight_;
+  float turnon_threshold_offline_loose_;
+  float turnon_threshold_offline_medium_;
+  float turnon_threshold_offline_tight_;
 
   edm::EDGetTokenT<reco::JetTagCollection> offlineDiscrTokenb_;
   edm::EDGetTokenT<edm::View<reco::BaseTagInfo>> offlineIPToken_;
@@ -248,6 +251,9 @@ BTVHLTOfflineSource::BTVHLTOfflineSource(const edm::ParameterSet& iConfig)
       turnon_threshold_loose_(iConfig.getParameter<double>("turnon_threshold_loose")),
       turnon_threshold_medium_(iConfig.getParameter<double>("turnon_threshold_medium")),
       turnon_threshold_tight_(iConfig.getParameter<double>("turnon_threshold_tight")),
+      turnon_threshold_offline_loose_(iConfig.getParameter<double>("turnon_threshold_offline_loose")),
+      turnon_threshold_offline_medium_(iConfig.getParameter<double>("turnon_threshold_offline_medium")),
+      turnon_threshold_offline_tight_(iConfig.getParameter<double>("turnon_threshold_offline_tight")),
       offlineDiscrTokenb_(consumes<reco::JetTagCollection>(iConfig.getParameter<edm::InputTag>("offlineDiscrLabelb"))),
       offlineIPToken_(consumes<View<BaseTagInfo>>(iConfig.getParameter<edm::InputTag>("offlineIPLabel"))),
 
@@ -398,21 +404,27 @@ void BTVHLTOfflineSource::analyze(const edm::Event& iEvent, const edm::EventSetu
 
             if (Discr_online > turnon_threshold_loose_) {
               v.Discr_turnon_loose.numerator->Fill(Discr_offline);
-              v.Pt_turnon_loose.numerator->Fill(Pt_offline);
-              v.Eta_turnon_loose.numerator->Fill(Eta_offline);
-              v.Phi_turnon_loose.numerator->Fill(Phi_offline);
+              if (Discr_offline > turnon_threshold_offline_loose_){
+                v.Pt_turnon_loose.numerator->Fill(Pt_offline);
+                v.Eta_turnon_loose.numerator->Fill(Eta_offline);
+                v.Phi_turnon_loose.numerator->Fill(Phi_offline);
+              }
             }
             if (Discr_online > turnon_threshold_medium_) {
               v.Discr_turnon_medium.numerator->Fill(Discr_offline);
-              v.Pt_turnon_medium.numerator->Fill(Pt_offline);
-              v.Eta_turnon_medium.numerator->Fill(Eta_offline);
-              v.Phi_turnon_medium.numerator->Fill(Phi_offline);
+              if (Discr_offline > turnon_threshold_offline_medium_){
+                v.Pt_turnon_medium.numerator->Fill(Pt_offline);
+                v.Eta_turnon_medium.numerator->Fill(Eta_offline);
+                v.Phi_turnon_medium.numerator->Fill(Phi_offline);
+              }
             }
             if (Discr_online > turnon_threshold_tight_) {
               v.Discr_turnon_tight.numerator->Fill(Discr_offline);
-              v.Pt_turnon_tight.numerator->Fill(Pt_offline);
-              v.Eta_turnon_tight.numerator->Fill(Eta_offline);
-              v.Phi_turnon_tight.numerator->Fill(Phi_offline);
+              if (Discr_offline > turnon_threshold_offline_tight_){
+                v.Pt_turnon_tight.numerator->Fill(Pt_offline);
+                v.Eta_turnon_tight.numerator->Fill(Eta_offline);
+                v.Phi_turnon_tight.numerator->Fill(Phi_offline);
+              }
             }
 
             break;
