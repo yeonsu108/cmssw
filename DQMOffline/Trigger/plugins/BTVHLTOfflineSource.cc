@@ -31,6 +31,7 @@
 #include "DataFormats/VertexReco/interface/Vertex.h"
 #include "DataFormats/BTauReco/interface/JetTag.h"
 #include "DataFormats/BTauReco/interface/ShallowTagInfo.h"
+#include "DataFormats/BTauReco/interface/DeepBoostedJetTagInfo.h"
 #include "HLTrigger/HLTcore/interface/HLTConfigProvider.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
@@ -100,6 +101,7 @@ private:
   edm::EDGetTokenT<trigger::TriggerEvent> triggerSummaryFUToken;
 
   edm::EDGetTokenT<std::vector<reco::ShallowTagInfo>> shallowTagInfosTokenPf_;
+  edm::EDGetTokenT<std::vector<reco::DeepBoostedJetTagInfo>> deepBoostedJetTagInfosTokenPf_;
 
   edm::EDGetTokenT<std::vector<SVTagInfo>> SVTagInfosTokenPf_;
 
@@ -267,6 +269,8 @@ BTVHLTOfflineSource::BTVHLTOfflineSource(const edm::ParameterSet& iConfig)
           edm::InputTag(triggerSummaryLabel_.label(), triggerSummaryLabel_.instance(), std::string("FU")))),
       shallowTagInfosTokenPf_(
           consumes<vector<reco::ShallowTagInfo>>(edm::InputTag("hltDeepCombinedSecondaryVertexBJetTagsInfos"))),
+      deepBoostedJetTagInfosTokenPf_(
+          consumes<vector<reco::DeepBoostedJetTagInfo>>(edm::InputTag("hltParticleNetJetTagInfos"))),
       SVTagInfosTokenPf_(consumes<std::vector<SVTagInfo>>(edm::InputTag("hltDeepSecondaryVertexTagInfosPF"))),
       pfTagsToken_(consumes<reco::JetTagCollection>(iConfig.getParameter<edm::InputTag>("onlineDiscrLabelPF"))),
       minDecayLength_(iConfig.getParameter<double>("minDecayLength")),
@@ -523,6 +527,13 @@ void BTVHLTOfflineSource::analyze(const edm::Event& iEvent, const edm::EventSetu
 
     edm::Handle<std::vector<reco::ShallowTagInfo>> shallowTagInfosPf;
     iEvent.getByToken(shallowTagInfosTokenPf_, shallowTagInfosPf);
+
+
+    edm::Handle<std::vector<reco::DeepBoostedJetTagInfo>> deepBoostedJetTagInfosPf;
+    iEvent.getByToken(deepBoostedJetTagInfosTokenPf_, deepBoostedJetTagInfosPf);
+
+    if (deepBoostedJetTagInfosPf.isValid()) std::cout << "deepBoostedJetTagInfosPf is working!!!!!!!" << std::endl;
+    else std::cout << "deepBoostedJetTagInfosPf is not working..." << std::endl;
 
     //    edm::Handle<std::vector<reco::TemplatedSecondaryVertexTagInfo<reco::IPTagInfo<edm::RefVector<std::vector<reco::Track>, reco::Track, edm::refhelper::FindUsingAdvance<std::vector<reco::Track>, reco::Track> >, reco::JTATagInfo>, reco::Vertex> > > caloTagInfos;
     //    iEvent.getByToken(caloTagInfosToken_, caloTagInfos);
